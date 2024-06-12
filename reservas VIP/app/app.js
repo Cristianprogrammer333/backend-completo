@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 
 //RUTAS
-app.get("/kors", (req, res) =>{
+app.get("/", (req, res) =>{
     res.send("Bienvenido al mundo de la programacion, sigue asi y no te desanimes");
 });
 
