@@ -157,9 +157,11 @@ export const LoginUsuario = async (req, res) => {
         }
 
         const hashedPassword = rows[0].contrasena;
+        console.log(`Hashed Password from DB: ${hashedPassword}`);
 
         // Comparar la contraseña proporcionada con la contraseña encriptada almacenada
         const isMatch = await bcrypt.compare(contrasena, hashedPassword);
+        console.log(`Password Match: ${isMatch}`);
 
         if (!isMatch) {
             return res.json({
@@ -169,14 +171,16 @@ export const LoginUsuario = async (req, res) => {
         }
 
         // Generar el token
-        const token = tokenSing({ correo, contrasena });
+        const token = tokenSing({ correo });
+        console.log(`Generated Token: ${token}`);
 
         res.json({
             respuesta: "Logueo correcto",
             estado: true,
-            token:token
+            token: token
         });
     } catch (error) {
+        console.error(`Login Error: ${error.message}`);
         res.json({
             respuesta: "Error en el logueo",
             type: error.message
