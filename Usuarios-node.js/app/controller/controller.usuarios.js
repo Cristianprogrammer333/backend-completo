@@ -188,7 +188,6 @@ export const LoginUsuario = async (req, res) => {
     }
 };
 
-
 export const ListarUsuario = async(req, res) =>{
 
     try {
