@@ -169,7 +169,7 @@ export const LoginUsuario = async (req, res) => {
         }
 
         // Generar el token
-        const token = tokenSing({ correo });
+        const token = tokenSing({ correo, contrasena });
 
         res.json({
             respuesta: "Logueo correcto",
